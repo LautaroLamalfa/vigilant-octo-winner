@@ -10,7 +10,7 @@ class chatMongoDb extends ContenedorMongoDb {
         })
     }
 
-    async user(username) {
+    async getTheUser(username) {
         try {
             let docs = false;
             docs = await super.getAll();

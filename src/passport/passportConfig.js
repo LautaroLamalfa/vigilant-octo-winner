@@ -11,7 +11,7 @@ passport.use("local-signup", new LocalStrategy ({
     passwordField:"password",
     passReqToCallback:true
 }, async (username, password, done) => {
-    let user = await users.getByUser(username)
+    let user = await users.getTheUser(username)
     const hash = bcrypt.hash(password, saltRounds);
 
     if (user) {
@@ -24,7 +24,7 @@ passport.use("local-signup", new LocalStrategy ({
 ))
 
 passport.use("local-login", new LocalStrategy(async (username, password, done) => {
-    let user = await users.getByUser(username)
+    let user = await users.getTheUser(username)
 
     if (user) {
         if(bcrypt.compareSync(password, user.password)){
