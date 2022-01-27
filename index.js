@@ -2,13 +2,6 @@ const express = require ("express");
 const session = require ("express-session");
 const passport = require("passport");
 
-
-const chatRoute = require ("./routes/chat");
-const prodRoute = require ("./routes/productos");
-const login = require("./routes/login")
-const logout = require("./routes/logout")
-const register = require ("./routes/register")
-
 const app = express()
 
 app.use(
@@ -30,10 +23,15 @@ app.use(passport.session())
 
 
 //Routes
+const login = require("./routes/login");
 app.use("/api/login", login);
+const logout = require("./routes/logout")
 app.use("/api/logout", logout);
+const chatRoute = require ("./routes/chat");
 app.use("/api/chat", chatRoute);
+const prodRoute = require ("./routes/productos");
 app.use("/api/products", prodRoute);
+const register = require ("./routes/register");
 app.use("/api/register", register)
 
 //Servidor HTTP

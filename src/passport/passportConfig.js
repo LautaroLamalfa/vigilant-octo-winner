@@ -10,7 +10,7 @@ passport.use("local-signup", new LocalStrategy ({
     usernameField:"username",
     passwordField:"password",
     passReqToCallback:true
-}, async (username, password, done) => {
+}, async (req, username, password, done) => {
     let user = await users.getTheUser(username)
     const hash = bcrypt.hash(password, saltRounds);
 

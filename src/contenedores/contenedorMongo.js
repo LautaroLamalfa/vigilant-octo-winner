@@ -1,11 +1,15 @@
 const mongoose = require('mongoose')
-const config = require('../configMongo')
 const { asPOJO, renameField, removeField } = require ("../../utils/objectUtils")
 
-mongoose.connect(config.mongodb.cnxStr, {}, () => {
-    console.log("Conexion exitosa 👍")
+mongoose.connect("mongodb+srv://Lautaro:LoL211255@clusterlol1.kugiw.mongodb.net/ClusterLOL1?retryWrites=true&w=majority")
+
+mongoose.connection.on("open", ()=>{
+    console.log("Base de datos conectada con exito!!")
 })
 
+mongoose.connection.on("error", ()=>{
+    console.log("Error al conectarse a la base de datos!!")
+})
 
 class ContenedorMongoDb {
 
